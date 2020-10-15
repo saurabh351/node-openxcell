@@ -113,14 +113,14 @@ export class ProfessorsService {
       .createQueryBuilder('p')
       .select('COUNT(p.id)', 'weekHour')
       .where('p.professor_id = :professor_id', { professor_id: professorId })
-      .andWhere('p.class_room_id = :class_room_id', { class_room_id: classRoomId })
+      // .andWhere('p.class_room_id = :class_room_id', { class_room_id: classRoomId })
       .getRawOne();
 
     const { dayHour } = await getRepository(ProfessorClassRoom)
       .createQueryBuilder('p')
       .select('COUNT(p.id)', 'dayHour')
       .where('p.professor_id = :professor_id', { professor_id: professorId })
-      .andWhere('p.class_room_id = :class_room_id', { class_room_id: classRoomId })
+      // .andWhere('p.class_room_id = :class_room_id', { class_room_id: classRoomId })
       .andWhere('p.day_id = :day_id', { day_id: dayId })
       .getRawOne();
 
